@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="http://127.0.0.1:5000/static/images/favicon.png" type="image/x-icon">
+  <title>Aqua culture</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="http://127.0.0.1:5000/static/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="http://127.0.0.1:5000/static/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="http://127.0.0.1:5000/static/css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <div class="hero_bg_box">
+      <div class="img-box">
+        <img src="http://127.0.0.1:5000/static/images/hero-bg.jpg" alt="">
+      </div>
+    </div>
+
+    <header class="header_section">
+      <div class="header_top">
+        <div class="container-fluid">
+          <div class="contact_link-container">
+            <a href="" class="contact_link1">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>
+                Bengaluru,
+              </span>
+            </a>
+            <a href="" class="contact_link2">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>
+                Call : +01 1234567890
+              </span>
+            </a>
+            <a href="" class="contact_link3">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span>
+                demo@gmail.com
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="/">
+              <span>
+                Aqua culture
+              </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""></span>
+            </button>
+
+            <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+              <ul class="navbar-nav  ">
+                <li class="nav-item ">
+                  <a style="color: white;" href="/home">Aquaculture</a>
+                  <a style="color: white;margin-left: 20px;" href="/analyse">Fish Disease</a>
+                  <a style="color: white;margin-left: 20px;" href="/developer">About Us</a>
+                  <a style="color: white;margin-left: 20px;"  href="/graph">Graphs</a>
+                  <a style="color: white;margin-left: 20px;"  href="/">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- contact section -->
+
+  <section class="contact_section layout_padding">
+    <div class="contact_bg_box">
+      <div class="img-box">
+        <img src="http://127.0.0.1:5000/static/images/contact-bg.jpg" alt="">
+      </div>
+    </div>
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Aqua predictor
+        </h2>
+      </div>
+
+            
+                <div class="row">
+                <div class="col-lg-5">
+                  <form action="/predict" method="post">
+                    <div class="contact_form-container">
+                  <label for="">Turbidity</label><input type="number" style="width: 70%;" name="Turbidity" required placeholder="Turbidity" value="{{turb}}"  step="any">
+                      <br>
+                    <label for="">Conductivity</label><input type="number" style="width: 70%;" name="Conductivity" required placeholder= "Conductivity" value="{{con}}" step="any">
+                    <br>
+                   <label for="">Temperature</label> <input type="number" style="width: 70%;" name="Temperature"  required placeholder="Temperature" step="any" value="{{tempe}}">
+                    <br>
+                   <label for="">PH</label> <input type="number" name="Ph" style="width: 70%;" required placeholder="Ph" step="any" value="{{ph}}">
+                      <br>
+                    <div class="btn-box">
+                      <button type="submit">
+                        Predict</button>    
+                    </div>
+                  </div>
+                </form>
+                  </div>
+                  <div class="col-lg-7">
+                    {% if status %}
+                    <div class="row text-center" style="color: blue;">
+  
+                      <!-- temperature data card -->
+                      <div class="col-xs-12 col-6 col-lg-3">
+                          <!--<a href="/tempChart/1h">-->
+                              <div class="card custon-shadow mt-3 pkfloat">
+                                  <h6 class="card-title border-bottom p-1 text-light bg-primary rounded" style="background-color: blue !important;">TEMPERATURE</h6>
+                                  <span class="card-text"><br>
+                                      <span class="h6">
+                                          {{tempe}}
+                                      </span>
+                                      <span class="text-primary">°C</span><br>
+                                      <img src="/static/thermometer.svg"  style="width: 50;height: 100px;margin: 10px auto;">
+                                  </span>
+                                  <!-- <hr id="hori_line"> -->
+                                  <!-- <p class="tx-12"><span class="tx-success">{{percentage_temp_change}}% ({{temp_change}})</span>
+                                      past hour</p> -->
+                              </div>
+                          </a>
+                      </div>
+          
+                      <!-- turbidity card -->
+                      <div class="col-xs-12 col-6 col-lg-3">
+                          <!--<a href="/turbChart/1h">-->
+                              <div class="card custon-shadow mt-3 pkfloat">
+                                  <h6 class="card-title border-bottom p-1 text-light bg-primary rounded" style="background-color: blue !important;">TURBIDITY</h6>
+                                  <span class="card-text"><br>
+                                      <span class="h6">{{turb}}</span>
+                                      <span class="text-primary">NTU</span><br>
+                                      <img src="/static/turbidity.svg"  style="width: 50;height: 100px;margin: 10px auto;">
+                                  </span>
+                                  <!-- <hr id="hori_line">
+                                  <p class="tx-12"><span class="tx-success">{{percentage_turbidity_change}}%
+                                          ({{turbidity_change}})</span> past hour</p> -->
+                              </div>
+                          </a>
+                      </div>
+          
+                      <!-- ph card -->
+                      <div class="col-xs-12 col-6 col-lg-3">
+                          <!--<a href="/phChart/1h">-->
+                              <div class="card custon-shadow mt-3 pkfloat">
+                                  <h6 class="card-title border-bottom p-1 text-light bg-primary rounded" style="background-color: blue !important;">PH</h6>
+                                  <span class="card-text"><br>
+                                      <span class="h6">{{ph}} </span><br>
+                                      <img src="/static/ph.svg" style="width: 50;height: 100px;margin: 10px auto;">
+                                  </span>
+                                  <!-- <hr id="hori_line">
+                                  <p class="tx-12"><span class="tx-success">{{percentage_ph_change}}% ({{ph_change}})</span> past
+                                      hour</p> -->
+                              </div>
+                          </a>
+                      </div>
+          
+                      <!-- conductivity card -->
+                      <div class="col-xs-12 col-6 col-lg-3">
+                          <!--<a href="/waterlevelChart/1h">-->
+                              <div class="card custon-shadow mt-3 pkfloat">
+                                  <h6 class="card-title border-bottom p-1 text-light bg-primary rounded" style="background-color: blue !important;">CONDUCTIVITY</h6>
+                                  <!-- <h6 class="card-title border-bottom p-1 text-light bg-primary rounded">Water Level</h6> -->
+                                  <span class="card-text"><br>
+                                      <span class="h6">{{con}}</span>
+                                      <span class="text-primary">watt</span><br>
+                                      <img src="/static/watermeter.png"  style="width: 50;height: 100px;margin: 10px auto;">
+                                  </span>
+                                  
+                              </div>
+                          </a>
+                      </div>
+                  </div>
+                  <br>
+                  <table class="table" style="color: white;">
+                    <tr>
+                      <th>Status</th><td>{{status}}</td>
+                    </tr>
+                    <tr>
+                      <th>Turbidity</th><td>{{tur}}</td>
+                    </tr>
+                    <tr>
+                      <th>Conductivity</th><td>{{cond}}</td>
+                    </tr>
+                    <tr>
+                      <th>PH</th><td>{{p}}</td>
+                    </tr>
+                    <tr>
+                      <th>Temperature</th><td>{{temp}}</td>
+                    </tr>
+                  </table>
+                  <br>
+                  <center><a class="btn btn-primary btn-lg" target="_blank" href="https://www.was.org/" role="button">Learn more </a></center>
+                  </div>
+                {% endif %}  
+                </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end contact section -->
+
+
+  <script src="http://127.0.0.1:5000/static/js/jquery-3.4.1.min.js"></script>
+  <script src="http://127.0.0.1:5000/static/js/bootstrap.js"></script>
+  <script src="http://127.0.0.1:5000/static/js/custom.js"></script>
+</body>
+
+</html>
